@@ -28,6 +28,8 @@ $.get('frox-agents.json', {some_var: ''}, function (data) {
                 }
             )
 
+        marker.bindPopup(this.name)
+
 //        marker.bindPopup(g11n3t("Loading..."))
 
         // var now = new Date().getTime();
