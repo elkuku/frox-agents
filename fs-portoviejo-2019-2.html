@@ -9,13 +9,159 @@
 
     <title>...</title>
 
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <style>
+        #tooltip {
+            background: cornsilk;
+            border: 1px solid black;
+            border-radius: 0 7px 7px 7px;
+            padding: 5px;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<object type="image/svg+xml" data="images/events/fs-portoviejo-2-2019.svg"></object>
 
+<object type="image/svg+xml" data="images/events/fs-portoviejo-2-2019.svg" id="theImage"></object>
+
+
+<div id="tooltip" style="display: none; position: absolute;"></div>
+
+
+<script>
+    function showTooltip(evt, text) {
+        let tooltip = document.getElementById("tooltip");
+        tooltip.innerHTML = text;
+        tooltip.style.display = "block";
+        tooltip.style.left = evt.pageX + 10 + 'px';
+        tooltip.style.top = evt.pageY + 10 + 'px';
+    }
+
+    function hideTooltip() {
+        var tooltip = document.getElementById("tooltip");
+        tooltip.style.display = "none";
+    }
+    // function showTooltip(evt, o) {
+    //     alert('show');
+    // }
+    //
+    // function hideTooltip() {
+    //     alert('showGGG');
+    //
+    // }
+
+    // var img = $('theImage');
+
+  //  console.log(img);
+
+    // $( "a" ).each(function( index ) {
+    //     console.log('aaa ' +  index + ": " + $( this ).text() );
+    // });
+
+    // img = document.getElementById('theImage');
+
+  //  console.log(img);
+
+    // Get the Object by ID
+    // var a = document.getElementById("svgObject");
+    // Get the SVG document inside the Object tag
+    // var svgDoc = img.contentDocument;
+    // console.log(svgDoc);
+    // Get one of the SVG items by ID;
+    // var svgItem = svgDoc.getElementById("a4726");
+    // Set the colour to something else
+    // console.log(svgItem);
+
+    // svgItem.setAttribute("fill", "lime");
+    // console.log(svgItem);
+
+
+    // showTooltip();
+
+    $(document).ready(function(){
+        var a = document.getElementById("theImage");
+
+        //it's important to add an load event listener to the object, as it will load the svg doc asynchronously
+        a.addEventListener("load",function(){
+            var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+            var svgRoot = svgDoc.documentElement;
+
+            //now we can query stuff with jquery like this
+            //note that we pass in the svgRoot as the context node!
+            // $("foo bar",svgRoot);
+
+            $( "a", svgRoot ).each(function( index ) {
+                //console.log(index);
+                // console.log(this);
+                // console.log(this.getAttribute('xlink:title'));
+                // console.log('aaa ' +  index + ": " + $( this ).text() );
+
+                // var title = this.getAttribute('xlink:title');
+                //
+                // console.log(title);
+
+                // this.setAttribute('title', 'hello' + title);
+
+                // $(this).tooltip({ trigger: 'click' });
+
+                $(this).on("click", function(e){
+                    // console.log(e)
+                    // console.log(that)
+                    // console.log(this)
+                    // console.log(this.getAttribute('xlink:title'));
+
+                    showTooltip(e, this.getAttribute('xlink:title'))
+
+
+
+                    // console.log(e.getAttribute('xlink:title'));
+                });
+            });
+
+
+        },false);
+    })
+
+
+    // $("theImage").load(function (ooo) {
+
+    //     console.log('a');
+    //     //
+    //     // //alert("Document loaded, including graphics and embedded documents (like SVG)");
+    //     var a = document.getElementById("theImage");
+    // console.log(a);
+    //     //
+    //     console.log('b');
+    //
+    // var img = $('theImage');
+    //
+    //  console.log(img);
+
+    //
+        // console.log(a);
+        //
+        // //get the inner DOM of alpha.svg
+        // var svgDoc = a.contentDocument;
+        //
+        // //get the inner element by id
+        // var delta = svgDoc.getElementById("a4748");
+        // delta.addEventListener("mousedown", function(){ alert('hello world!')}, false);
+    // });
+</script>
 
 </body>
 </html>
