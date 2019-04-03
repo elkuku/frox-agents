@@ -73,10 +73,10 @@
             style="opacity:0;fill:#640000;fill-opacity:0.39393945"
             onmouseover="this.style.opacity=1"
             onmouseout="this.style.opacity=0"
-            cx="514.47272"
-            cy="371.63635"
-            rx="19.054546"
             ry="29.527273"
+            rx="19.054546"
+            cy="371.63635"
+            cx="514.47272"
             id="P3drosky"/>
     <ellipse
             style="opacity:0;fill:#640000;fill-opacity:0.39393945"
