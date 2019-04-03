@@ -35,7 +35,13 @@
 
 <body>
 
+<!--
+<h1>FS Portoviejo 2/2019</h1>
+<p>
+    Haga click en las caras para ver los nombres ;)
 
+</p>
+-->
 <object type="image/svg+xml" data="images/events/fs-portoviejo-2-2019.svg" id="theImage"></object>
 
 
@@ -55,48 +61,12 @@
         var tooltip = document.getElementById("tooltip");
         tooltip.style.display = "none";
     }
-    // function showTooltip(evt, o) {
-    //     alert('show');
-    // }
-    //
-    // function hideTooltip() {
-    //     alert('showGGG');
-    //
-    // }
 
-    // var img = $('theImage');
-
-  //  console.log(img);
-
-    // $( "a" ).each(function( index ) {
-    //     console.log('aaa ' +  index + ": " + $( this ).text() );
-    // });
-
-    // img = document.getElementById('theImage');
-
-  //  console.log(img);
-
-    // Get the Object by ID
-    // var a = document.getElementById("svgObject");
-    // Get the SVG document inside the Object tag
-    // var svgDoc = img.contentDocument;
-    // console.log(svgDoc);
-    // Get one of the SVG items by ID;
-    // var svgItem = svgDoc.getElementById("a4726");
-    // Set the colour to something else
-    // console.log(svgItem);
-
-    // svgItem.setAttribute("fill", "lime");
-    // console.log(svgItem);
-
-
-    // showTooltip();
-
-    $(document).ready(function(){
+    $(document).ready(function () {
         var a = document.getElementById("theImage");
 
         //it's important to add an load event listener to the object, as it will load the svg doc asynchronously
-        a.addEventListener("load",function(){
+        a.addEventListener("load", function () {
             var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
             var svgRoot = svgDoc.documentElement;
 
@@ -104,63 +74,28 @@
             //note that we pass in the svgRoot as the context node!
             // $("foo bar",svgRoot);
 
-            $( "a", svgRoot ).each(function( index ) {
-                //console.log(index);
-                // console.log(this);
-                // console.log(this.getAttribute('xlink:title'));
-                // console.log('aaa ' +  index + ": " + $( this ).text() );
+            $("a", svgRoot).each(function (index) {
 
-                // var title = this.getAttribute('xlink:title');
-                //
-                // console.log(title);
-
-                // this.setAttribute('title', 'hello' + title);
-
-                // $(this).tooltip({ trigger: 'click' });
-
-                $(this).on("click", function(e){
-                    // console.log(e)
-                    // console.log(that)
-                    // console.log(this)
-                    // console.log(this.getAttribute('xlink:title'));
+                $(this).on("click", function (e) {
 
                     showTooltip(e, this.getAttribute('xlink:title'))
 
+                });
+            });
 
+            $("ellipse", svgRoot).each(function (index) {
 
-                    // console.log(e.getAttribute('xlink:title'));
+                $(this).on("click", function (e) {
+
+                    showTooltip(e, this.getAttribute('id'))
+
                 });
             });
 
 
-        },false);
+        }, false);
     })
 
-
-    // $("theImage").load(function (ooo) {
-
-    //     console.log('a');
-    //     //
-    //     // //alert("Document loaded, including graphics and embedded documents (like SVG)");
-    //     var a = document.getElementById("theImage");
-    // console.log(a);
-    //     //
-    //     console.log('b');
-    //
-    // var img = $('theImage');
-    //
-    //  console.log(img);
-
-    //
-        // console.log(a);
-        //
-        // //get the inner DOM of alpha.svg
-        // var svgDoc = a.contentDocument;
-        //
-        // //get the inner element by id
-        // var delta = svgDoc.getElementById("a4748");
-        // delta.addEventListener("mousedown", function(){ alert('hello world!')}, false);
-    // });
 </script>
 
 </body>
